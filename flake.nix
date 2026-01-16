@@ -17,6 +17,10 @@
             python-pkgs.pandas
             python-pkgs.requests
           ]))
+
+          # Required for many pip packages to compile correctly on Nix
+          pkgs.stdenv.cc.cc.lib
+          pkgs.zlib
         ];
 
         shellHook = ''
