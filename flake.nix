@@ -13,10 +13,7 @@
     {
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [
-          (pkgs.python311.withPackages (python-pkgs: [
-            python-pkgs.pandas
-            python-pkgs.requests
-          ]))
+          pkgs.python311
 
           # Required for many pip packages to compile correctly on Nix
           pkgs.stdenv.cc.cc.lib
