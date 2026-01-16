@@ -36,7 +36,7 @@
           export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib:${pkgs.zlib}/lib:$LD_LIBRARY_PATH"
 
           # Install the packages in a requirements.txt if there is one
-          if [ -d "requirements.txt" ]; then
+          if [ -f "requirements.txt" ]; then
             echo "Found requirements.txt, running pip install..."
             python -m pip install -r requirements.txt
             echo "Requirements installed!"
