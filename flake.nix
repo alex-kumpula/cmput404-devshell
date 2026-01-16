@@ -20,7 +20,18 @@
         ];
 
         shellHook = ''
-          echo "Entered a Python development shell!"
+          VENV=.venv
+          if [ ! -d "$VENV" ]; then
+            echo "Creating new venv..."
+            python -m venv "$VENV"
+          fi
+
+          source "$VENV/bin/activate"
+          
+          # Fix for C-libraries in pip-installed packages
+          export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib:${pkgs.zlib}/lib:$LD_LIBRARY_PATH"
+          
+          echo "Python virtual environment activated!"
           python --version
         '';
       };
